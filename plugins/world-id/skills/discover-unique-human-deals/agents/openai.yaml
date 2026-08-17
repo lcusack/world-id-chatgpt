@@ -1,0 +1,16 @@
+interface:
+  display_name: "Discover Unique-Human Deals"
+  short_description: "See what your World ID unlocks today"
+  default_prompt: "Use $discover-unique-human-deals to show me today’s deals for unique humans."
+  brand_color: "#3155EE"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "world-id"
+      description: "World ID verification and unique-human deal tools"
+      transport: "streamable_http"
+      url: "https://world-id-chatgpt.foundry-world.workers.dev/mcp"
+
+policy:
+  allow_implicit_invocation: true

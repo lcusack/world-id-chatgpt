@@ -1,0 +1,38 @@
+{
+  "name": "world-id",
+  "version": "0.1.0+codex.20260817173308",
+  "description": "Discover current deals for unique humans through an Orb-verified World ID connection.",
+  "author": {
+    "name": "Tools for Humanity",
+    "url": "https://world.org/"
+  },
+  "homepage": "https://humanrequired.shop/",
+  "keywords": [
+    "world-id",
+    "proof-of-human",
+    "verified-human",
+    "chatgpt"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "World ID",
+    "shortDescription": "See what unique humans can unlock today.",
+    "longDescription": "Privately connect an Orb-verified World ID to ChatGPT, discover current offers for unique humans at Human Required, inspect live products and availability, and continue to the store to claim a deal.",
+    "developerName": "Tools for Humanity",
+    "category": "Social",
+    "capabilities": [
+      "OAuth",
+      "Read"
+    ],
+    "websiteURL": "https://humanrequired.shop/",
+    "defaultPrompt": [
+      "Check live and show me today\u2019s deals for unique humans.",
+      "What can I unlock with World ID today?",
+      "Show me the 15% Unique Human of SF offer."
+    ],
+    "brandColor": "#3155EE",
+    "composerIcon": "./assets/world-id.png",
+    "logo": "./assets/world-id.png"
+  }
+}

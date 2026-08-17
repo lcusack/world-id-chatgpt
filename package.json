@@ -1,0 +1,37 @@
+{
+  "name": "world-id-chatgpt-mcp-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An OAuth-protected remote MCP server that links a World ID 4.0 session to ChatGPT.",
+  "scripts": {
+    "build": "node scripts/build-web.js",
+    "dev": "npm run build && node --watch src/server.js",
+    "start": "npm run build && node src/server.js",
+    "test": "node --test",
+    "typecheck": "tsc --noEmit",
+    "cf:types": "wrangler types",
+    "cf:dev": "npm run build && wrangler dev",
+    "cf:check": "npm run build && npm run typecheck && wrangler deploy --dry-run",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "^0.10.3",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@worldcoin/idkit-core": "^4.2.3",
+    "agents": "^0.20.1",
+    "dotenv": "^17.4.2",
+    "esbuild": "^0.28.2",
+    "qrcode": "^1.5.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.122.0"
+  }
+}

@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f9f9f8" />
+    <meta
+      name="description"
+      content="Propose a verified-human capability for the World ID connector."
+    />
+    <link rel="preload" href="/WorldProMVPVF.ttf" as="font" type="font/ttf" crossorigin />
+    <title>Submit a skill · World ID</title>
+    <style>
+      @font-face {
+        font-family: "World Pro";
+        src: url("/WorldProMVPVF.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+      }
+      :root {
+        color-scheme: light;
+        font-family: "World Pro", "Noto Sans", Helvetica, sans-serif;
+        font-weight: 325;
+        color: #181818;
+        background: #f9f9f8;
+        font-synthesis: none;
+        --ink: #181818;
+        --muted: #75726f;
+        --quiet: #9d9b96;
+        --line: #e1dfda;
+        --paper: #fff;
+        --blue: #3fdbed;
+        --blue-soft: #ecfbfd;
+        --green: #00ab48;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; min-width: 320px; }
+      a { color: inherit; }
+      button { font: inherit; }
+      strong { font-weight: 500; }
+      h2, h3 { font-weight: 500; }
+      :focus-visible { outline: 3px solid rgba(63, 219, 237, .48); outline-offset: 3px; }
+      .shell { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand { display: inline-flex; align-items: center; text-decoration: none; }
+      .brand img { display: block; width: 96px; height: 24px; }
+      .header-nav { display: flex; align-items: center; gap: 28px; font-size: 13px; font-weight: 325; }
+      .header-nav a { text-decoration: none; }
+      .header-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+      .status { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); }
+      .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #17a263; }
+
+      .hero { padding: 102px 0 82px; }
+      .eyebrow, .kicker { margin: 0 0 24px; color: var(--muted); font-size: 14px; font-weight: 500; }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 350px; gap: 88px; align-items: end; }
+      h1 { max-width: 780px; margin: 0; font-size: clamp(58px, 8vw, 96px); line-height: 1; letter-spacing: -.025em; font-weight: 325; }
+      .hero-side p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.58; letter-spacing: -.015em; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .button-primary { background: var(--ink); color: #fff; }
+      .button:hover { transform: translateY(-1px); }
+
+      .principle-strip { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: #fff; }
+      .principle { min-height: 150px; padding: 24px; border-right: 1px solid var(--line); }
+      .principle:last-child { border-right: 0; }
+      .principle span { color: #007cfb; font: 500 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .principle h2 { margin: 40px 0 7px; font-size: 19px; letter-spacing: -.03em; }
+      .principle p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+      .section { padding: 110px 0; border-top: 1px solid var(--line); }
+      .section-heading { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 72px; margin-bottom: 54px; }
+      .kicker { margin-top: 7px; }
+      h2.section-title { max-width: 790px; margin: 0; font-size: clamp(42px, 5.4vw, 68px); line-height: 1.04; letter-spacing: -.025em; font-weight: 325; }
+      .section-intro { max-width: 720px; margin: 21px 0 0; color: var(--muted); font-size: 17px; line-height: 1.62; }
+
+      .fit-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ink); }
+      .fit-card { min-height: 215px; padding: 25px 29px 28px 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .fit-card:nth-child(even) { padding-left: 29px; border-right: 0; }
+      .fit-card strong { display: block; margin-bottom: 56px; color: #007cfb; font: 500 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .fit-card h3 { margin: 0 0 9px; font-size: 21px; letter-spacing: -.035em; }
+      .fit-card p { max-width: 450px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+      .lanes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .lane { min-height: 275px; padding: 28px; border: 1px solid var(--line); background: var(--paper); display: flex; flex-direction: column; justify-content: space-between; }
+      .lane-tag { align-self: flex-start; padding: 7px 10px; border-radius: 999px; background: var(--blue-soft); color: var(--ink); font-size: 11px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; }
+      .lane h3 { margin: 48px 0 10px; font-size: 25px; letter-spacing: -.04em; }
+      .lane p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+      .template-layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 70px; align-items: start; }
+      .template-copy { position: sticky; top: 24px; }
+      .template-copy h2 { margin: 0; font-size: 46px; line-height: 1; letter-spacing: -.052em; }
+      .template-copy p { margin: 20px 0 25px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+      .template-box { overflow: hidden; border: 1px solid #cfd0c9; background: #11120f; color: #e8e9e4; box-shadow: 0 24px 60px #15160f14; }
+      .template-bar { display: flex; align-items: center; justify-content: space-between; min-height: 52px; padding: 0 16px; border-bottom: 1px solid #34352f; color: #9fa198; font-size: 12px; }
+      .copy-button { min-height: 31px; padding: 0 11px; border: 1px solid #4d4f47; border-radius: 999px; background: #242620; color: #fff; font-size: 11px; font-weight: 500; cursor: pointer; }
+      pre { margin: 0; padding: 23px; overflow: auto; white-space: pre-wrap; color: #dedfd9; font: 12.5px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+      .review { display: grid; grid-template-columns: 1fr 1fr; gap: 76px; }
+      .review h2 { max-width: 500px; margin: 0; font-size: clamp(42px, 5vw, 64px); line-height: .98; letter-spacing: -.055em; }
+      .review-list { border-top: 1px solid var(--ink); }
+      .review-step { display: grid; grid-template-columns: 45px minmax(0, 1fr); gap: 17px; padding: 22px 0 25px; border-bottom: 1px solid var(--line); }
+      .review-step span { color: #007cfb; font: 500 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .review-step h3 { margin: 0 0 7px; font-size: 18px; letter-spacing: -.025em; }
+      .review-step p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+      .intake { display: grid; grid-template-columns: 1fr auto; gap: 36px; align-items: center; padding: 34px; border: 1px solid var(--line); background: #fff; }
+      .intake h2 { margin: 0 0 10px; font-size: 31px; letter-spacing: -.045em; }
+      .intake p { max-width: 720px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.62; }
+      .intake-note { margin-top: 13px !important; color: var(--ink) !important; font-weight: 500; }
+      .footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 106px; border-top: 1px solid var(--line); color: var(--quiet); font-size: 12px; }
+      .footer a { color: var(--muted); }
+
+      @media (max-width: 850px) {
+        .hero-grid, .section-heading, .template-layout, .review { grid-template-columns: 1fr; gap: 34px; }
+        .hero-side { max-width: 650px; }
+        .template-copy { position: static; }
+        .lanes { grid-template-columns: 1fr; }
+      }
+
+      @media (max-width: 620px) {
+        .shell { width: min(100% - 28px, 1120px); }
+        .header-nav a:not(:last-child) { display: none; }
+        .hero { padding: 66px 0 56px; }
+        h1 { font-size: clamp(50px, 15vw, 70px); }
+        .button { width: 100%; }
+        .principle-strip, .fit-grid { grid-template-columns: 1fr; }
+        .principle { border-right: 0; border-bottom: 1px solid var(--line); }
+        .principle:last-child { border-bottom: 0; }
+        .fit-card, .fit-card:nth-child(even) { min-height: 0; padding: 24px 0; border-right: 0; }
+        .fit-card strong { margin-bottom: 35px; }
+        .section { padding: 82px 0; }
+        .intake { grid-template-columns: 1fr; padding: 25px; }
+        .footer { align-items: flex-start; flex-direction: column; justify-content: center; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header shell">
+      <a class="brand" href="/" aria-label="World ID home">
+        <img src="/world-logo.svg" alt="World" width="96" height="24" />
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="/founding-humans">Founding Humans</a>
+        <a href="/#setup">Try World ID</a>
+        <span class="status">Pilot intake open</span>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">World ID marketplace</p>
+            <h1 id="hero-title">Bring the next human-only capability.</h1>
+          </div>
+          <div class="hero-side">
+            <p>Propose an experience that becomes possible—or materially better—when an AI agent can privately establish that it serves one unique human.</p>
+            <div class="hero-actions">
+              <button class="button button-primary" type="button" data-copy-template>Copy proposal template</button>
+              <a class="button" href="#criteria">See the criteria</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="principle-strip shell" aria-label="Marketplace principles">
+        <article class="principle"><span>01</span><h2>One connector</h2><p>Capabilities appear through the existing World ID connection rather than requiring another identity ceremony.</p></article>
+        <article class="principle"><span>02</span><h2>Minimum disclosure</h2><p>Use the smallest verified-human claim needed. Never request the underlying proof, session, wallet, or identity.</p></article>
+        <article class="principle"><span>03</span><h2>Measurable utility</h2><p>Every pilot should define activation, sharing, redemption, and repeat usage before it launches.</p></article>
+      </section>
+
+      <section id="criteria" class="section shell" aria-labelledby="fit-title">
+        <div class="section-heading">
+          <p class="kicker">What belongs</p>
+          <div>
+            <h2 id="fit-title" class="section-title">World ID should change the outcome.</h2>
+            <p class="section-intro">A normal ChatGPT tool with a World ID logo is not enough. Strong submissions use uniqueness, continuity, exact approval, or the verified-human network as an essential product primitive.</p>
+          </div>
+        </div>
+        <div class="fit-grid">
+          <article class="fit-card"><strong>ECONOMIC</strong><h3>Fair access and allocation</h3><p>One trial, discount, drop, compute grant, ticket, or resource allocation per unique human.</p></article>
+          <article class="fit-card"><strong>STATUS + NETWORK</strong><h3>Membership that compounds</h3><p>Credentials, founding cohorts, communities, referrals, or shared unlocks whose value grows with verified participation.</p></article>
+          <article class="fit-card"><strong>PROVENANCE</strong><h3>Human-approved artifacts</h3><p>Receipts for exact prompts, instructions, votes, creative works, or actions approved by a unique human.</p></article>
+          <article class="fit-card"><strong>UTILITY</strong><h3>Safer delegated action</h3><p>Returning-human continuity or fresh approval for consequential agent actions, without exposing a real-world identity.</p></article>
+        </div>
+      </section>
+
+      <section class="section shell" aria-labelledby="lane-title">
+        <div class="section-heading">
+          <p class="kicker">Three ways in</p>
+          <div>
+            <h2 id="lane-title" class="section-title">You do not need finished code.</h2>
+            <p class="section-intro">The pilot marketplace is curated. Product teams, partners, and developers can enter at different stages.</p>
+          </div>
+        </div>
+        <div class="lanes">
+          <article class="lane"><span class="lane-tag">Concept</span><div><h3>Idea proposal</h3><p>Describe the user outcome, why World ID is necessary, and the smallest experiment that could test demand.</p></div></article>
+          <article class="lane"><span class="lane-tag">Partner</span><div><h3>Capability pilot</h3><p>Bring an existing offer, API, product, community, or resource that can be reserved for unique humans.</p></div></article>
+          <article class="lane"><span class="lane-tag">Developer</span><div><h3>Working integration</h3><p>Share the proposed MCP tools, authorization flow, data handling, failure modes, and test environment.</p></div></article>
+        </div>
+      </section>
+
+      <section id="template" class="section shell" aria-labelledby="template-title">
+        <div class="template-layout">
+          <div class="template-copy">
+            <p class="kicker">Submission template</p>
+            <h2 id="template-title">Make the proposal concrete.</h2>
+            <p>Short answers are fine. The most important fields are the user outcome, why a unique human matters, the exact ChatGPT experience, and what success looks like.</p>
+            <button class="button button-primary" type="button" data-copy-template>Copy this template</button>
+          </div>
+          <div class="template-box">
+            <div class="template-bar"><span>world-id-skill-proposal.txt</span><button class="copy-button" type="button" data-copy-template>Copy</button></div>
+            <pre id="proposal-template">Capability name:
+
+One-line user outcome:
+
+Submission stage: Idea / Partner pilot / Working integration
+
+Category: Economic / Status + network / Provenance / Utility / Other
+
+Target user:
+
+Why is World ID necessary for this capability?
+
+What should the user ask ChatGPT?
+
+Step-by-step user journey:
+1.
+2.
+3.
+
+What does the user receive or accomplish?
+
+Required World ID primitive:
+- Unique human now
+- Same returning human
+- One claim per human
+- Exact human approval
+- Verified-human network membership
+
+Proposed MCP tools or partner handoff:
+
+What becomes public or shareable, if anything?
+
+What user data is required and how long is it retained?
+
+Explicit consent or approval moments:
+
+Success metrics:
+- Activation:
+- Sharing:
+- Redemption or completion:
+- Repeat usage:
+
+Abuse, safety, or fairness risks:
+
+Smallest pilot we could launch:
+
+Owner and best contact:</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell review" aria-labelledby="review-title">
+        <div><p class="kicker">Review path</p><h2 id="review-title">Curated first. Self-serve later.</h2><p class="section-intro">Marketplace admission means the capability may appear through a trusted connector, so early submissions receive product, privacy, and security review.</p></div>
+        <div class="review-list">
+          <article class="review-step"><span>01</span><div><h3>Fit screen</h3><p>Does verified humanity materially improve the user outcome?</p></div></article>
+          <article class="review-step"><span>02</span><div><h3>Privacy and consent review</h3><p>Minimize claims, define public data, and require explicit approval for consequential actions.</p></div></article>
+          <article class="review-step"><span>03</span><div><h3>Sandbox integration</h3><p>Test tool contracts, partner handoffs, failure behavior, and one-per-human enforcement.</p></div></article>
+          <article class="review-step"><span>04</span><div><h3>Measured pilot</h3><p>Launch to a bounded audience and compare activation, sharing, redemption, and repeat usage.</p></div></article>
+          <article class="review-step"><span>05</span><div><h3>Connector listing</h3><p>Successful capabilities graduate into the World ID connector and future World ID marketplace.</p></div></article>
+        </div>
+      </section>
+
+      <section class="section shell">
+        <div class="intake">
+          <div>
+            <h2>Ready to propose one?</h2>
+            <p>Copy the template, complete it, and send it to the World ID team member or channel that shared this prototype with you.</p>
+            <p class="intake-note">This page does not upload code or automatically publish a capability. A public intake form and submission status workflow are coming later.</p>
+          </div>
+          <button class="button button-primary" type="button" data-copy-template>Copy proposal template</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer shell">
+      <span>World ID marketplace · Pilot intake</span>
+      <span><a href="/">World ID</a> · <a href="/founding-humans">Founding Humans</a></span>
+    </footer>
+    <script src="/submit.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+node_modules/
+.env
+.dev.vars
+.wrangler/
+.deck-work/
+worker-configuration.d.ts
+public/verify.js
+public/verify.js.map
+public/intent.js
+public/intent.js.map
+public/idkit_wasm_bg.wasm
+coverage/
+*.log
+.DS_Store

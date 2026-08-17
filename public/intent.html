@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f9f9f8" />
+    <link rel="preload" href="/WorldProMVPVF.ttf" as="font" type="font/ttf" crossorigin />
+    <title>Approve with World ID</title>
+    <style>
+      @font-face { font-family: "World Pro"; src: url("/WorldProMVPVF.ttf") format("truetype"); font-style: normal; font-weight: 100 900; font-display: swap; }
+      :root { color-scheme: light; font-family: "World Pro", "Noto Sans", Helvetica, sans-serif; font-weight: 325; }
+      * { box-sizing: border-box; }
+      strong { font-weight: 500; }
+      [hidden] { display: none !important; }
+      body { margin: 0; min-height: 100vh; background: #f9f9f8; color: #181818; padding: 28px 20px; }
+      main { width: min(100%, 680px); margin: 0 auto; }
+      .brand-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 8px 4px 16px; }
+      .world-logo { display: block; width: 96px; height: 24px; }
+      .eyebrow { margin: 0; font-size: 13px; font-weight: 500; color: #75726f; }
+      .card { background: #fff; border: 1px solid #e1dfda; border-radius: 24px; padding: clamp(24px, 5vw, 42px); box-shadow: 0 20px 60px rgba(24, 24, 24, .06); }
+      h1 { margin: 0 0 10px; font-size: clamp(32px, 6vw, 46px); line-height: 1.08; letter-spacing: -.02em; font-weight: 325; }
+      #detail { color: #75726f; line-height: 1.5; margin: 0 0 26px; }
+      .intent { border: 1px solid #e1dfda; background: #f9f9f8; border-radius: 18px; padding: 22px; }
+      .intent h2 { font-size: 20px; margin: 0 0 10px; letter-spacing: -.01em; font-weight: 500; }
+      .instruction { white-space: pre-wrap; line-height: 1.6; margin: 0; color: #2d2c2c; }
+      .meta { display: grid; gap: 12px; margin: 20px 0 0; padding: 18px 0 0; border-top: 1px solid #e1dfda; }
+      .meta div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; }
+      .meta dt { color: #75726f; }
+      .meta dd { margin: 0; overflow-wrap: anywhere; }
+      ul { margin: 0; padding-left: 20px; line-height: 1.6; }
+      .hash { font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: #75726f; overflow-wrap: anywhere; }
+      .actions { margin-top: 24px; }
+      button, a.button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 21px; border: 0; border-radius: 999px; background: #181818; color: #fff; text-decoration: none; font: inherit; font-weight: 500; cursor: pointer; }
+      button:disabled { opacity: .55; cursor: wait; }
+      #world-link { margin-top: 12px; background: #3fdbed; color: #181818; }
+      #receipt-link { background: #00ab48; }
+      #qr { display: block; margin: 22px auto 0; border: 12px solid #fff; border-radius: 16px; box-shadow: 0 0 0 1px #e1dfda; }
+      .privacy { margin: 24px 4px 0; padding-top: 20px; border-top: 1px solid #e1dfda; font-size: 12px; line-height: 1.5; color: #9d9b96; }
+      @media (max-width: 480px) { .meta div { grid-template-columns: 1fr; gap: 3px; } }
+    </style>
+  </head>
+  <body data-state="ready">
+    <main>
+      <div class="brand-row">
+        <img class="world-logo" src="/world-logo.svg" alt="World" width="96" height="24" />
+        <div class="eyebrow">World ID · Human approval</div>
+      </div>
+      <section class="card">
+        <h1 id="status">Review this instruction</h1>
+        <p id="detail">World App will approve this exact content—not a generic prompt.</p>
+        <article class="intent" id="intent-card" hidden>
+          <h2 id="intent-title"></h2>
+          <p class="instruction" id="intent-instruction"></p>
+          <dl class="meta">
+            <div id="audience-row" hidden><dt>Audience</dt><dd id="intent-audience"></dd></div>
+            <div id="constraints-row" hidden><dt>Constraints</dt><dd><ul id="intent-constraints"></ul></dd></div>
+            <div id="validity-row" hidden><dt>Valid until</dt><dd id="intent-validity"></dd></div>
+            <div><dt>Intent hash</dt><dd class="hash" id="intent-hash"></dd></div>
+          </dl>
+        </article>
+        <div class="actions">
+          <button id="approve-button" type="button" disabled>Approve with World ID</button>
+          <div><a id="world-link" class="button" href="#" hidden>Open World App</a></div>
+          <div><a id="receipt-link" class="button" href="#" hidden>View verified receipt</a></div>
+        </div>
+        <canvas id="qr" hidden aria-label="World ID approval QR code"></canvas>
+        <p class="privacy">The receipt contains the instruction and a minimal Orb-verified-human claim. It never includes your World proof, session ID, nullifier, identity, wallet, phone number, or biometric data.</p>
+      </section>
+    </main>
+    <script type="module" src="/intent.js"></script>
+  </body>
+</html>

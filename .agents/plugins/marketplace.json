@@ -1,0 +1,20 @@
+{
+  "name": "world-id-plugins",
+  "interface": {
+    "displayName": "World ID Plugins"
+  },
+  "plugins": [
+    {
+      "name": "world-id",
+      "source": {
+        "source": "local",
+        "path": "./plugins/world-id"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Social"
+    }
+  ]
+}
