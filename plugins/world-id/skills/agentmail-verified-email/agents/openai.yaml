@@ -1,0 +1,16 @@
+interface:
+  display_name: "AgentMail Verified Email"
+  short_description: "Use AgentMail with World ID assurance"
+  default_prompt: "Connect AgentMail and show my agent inboxes."
+  brand_color: "#3155EE"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "world-id-hub"
+      description: "Unified World ID catalog and delegated AgentMail tools"
+      transport: "streamable_http"
+      url: "https://world-id-chatgpt.foundry-world.workers.dev/mcp/hub"
+
+policy:
+  allow_implicit_invocation: true

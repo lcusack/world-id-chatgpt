@@ -1,0 +1,16 @@
+interface:
+  display_name: "Official World ID Benefits"
+  short_description: "Find benefits from the production catalog"
+  default_prompt: "Show me the current official World ID benefits."
+  brand_color: "#3155EE"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "world-id-hub"
+      description: "Unified World ID hub backed by the official production catalog"
+      transport: "streamable_http"
+      url: "https://world-id-chatgpt.foundry-world.workers.dev/mcp/hub"
+
+policy:
+  allow_implicit_invocation: true

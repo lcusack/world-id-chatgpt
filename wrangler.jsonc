@@ -28,6 +28,20 @@
       "migrations_dir": "migrations"
     }
   ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "PARTNER_HUB",
+        "class_name": "PartnerHubAgent"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["PartnerHubAgent"]
+    }
+  ],
   "kv_namespaces": [
     {
       "binding": "OAUTH_KV",

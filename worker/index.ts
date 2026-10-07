@@ -16,6 +16,7 @@ import {
   saveRpContext,
 } from "./db";
 import { mcpApiHandler } from "./mcp";
+import { hubMcpApiHandler } from "./hub-mcp";
 import { DealCatalogError, listUniqueHumanDeals } from "./deals";
 import { ClaimError, purgeExpiredClaims, redeemHumanDealClaim } from "./claims";
 import type { AttemptRow, AuthProps, Env, HumanGrantRow } from "./types";
@@ -990,8 +991,10 @@ const defaultHandler: ExportedHandler<Env> = {
 };
 
 const oauthProvider = new OAuthProvider<Env>({
-  apiRoute: "/mcp",
-  apiHandler: mcpApiHandler,
+  apiHandlers: {
+    "/mcp/hub": hubMcpApiHandler,
+    "/mcp": mcpApiHandler,
+  },
   defaultHandler,
   authorizeEndpoint: "/authorize",
   tokenEndpoint: "/oauth/token",
@@ -1031,3 +1034,5 @@ export default {
     }));
   },
 } satisfies ExportedHandler<Env>;
+
+export { PartnerHubAgent } from "./partner-hub-agent";

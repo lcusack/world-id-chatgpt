@@ -1,0 +1,16 @@
+interface:
+  display_name: "World ID Account"
+  short_description: "Check the official World ID connection"
+  default_prompt: "Is my World ID account connected?"
+  brand_color: "#3155EE"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "world-id-hub"
+      description: "Unified World ID hub connection and official benefit catalog"
+      transport: "streamable_http"
+      url: "https://world-id-chatgpt.foundry-world.workers.dev/mcp/hub"
+
+policy:
+  allow_implicit_invocation: true

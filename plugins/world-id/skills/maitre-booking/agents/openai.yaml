@@ -1,0 +1,16 @@
+interface:
+  display_name: "Maître Bookings"
+  short_description: "Find and claim Maître restaurant tables"
+  default_prompt: "Help me claim the Maître World ID benefit."
+  brand_color: "#3155EE"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "world-id-hub"
+      description: "Unified World ID catalog and delegated Maître tools"
+      transport: "streamable_http"
+      url: "https://world-id-chatgpt.foundry-world.workers.dev/mcp/hub"
+
+policy:
+  allow_implicit_invocation: true
