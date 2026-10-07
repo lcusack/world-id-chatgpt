@@ -1,4 +1,5 @@
 import type { AuthRequest, OAuthHelpers } from "@cloudflare/workers-oauth-provider";
+import type { PartnerHubAgent } from "./partner-hub-agent";
 
 export type WorldEnvironment = "production";
 
@@ -15,6 +16,7 @@ export interface Env {
   DB: D1Database;
   OAUTH_KV: KVNamespace;
   OAUTH_PROVIDER: OAuthHelpers;
+  PARTNER_HUB: DurableObjectNamespace<PartnerHubAgent>;
   ASSETS: Fetcher;
   AUTH_RATE_LIMITER: RateLimit;
   PROOF_RATE_LIMITER: RateLimit;

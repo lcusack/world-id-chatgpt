@@ -4,6 +4,8 @@ Production deployment: [https://world-id-chatgpt.foundry-world.workers.dev](http
 
 Remote MCP endpoint: `https://world-id-chatgpt.foundry-world.workers.dev/mcp`
 
+Unified World ID hub endpoint: `https://world-id-chatgpt.foundry-world.workers.dev/mcp/hub`
+
 Verified Human Wall: [https://world-id-chatgpt.foundry-world.workers.dev/wall](https://world-id-chatgpt.foundry-world.workers.dev/wall)
 
 Founding Humans: [https://world-id-chatgpt.foundry-world.workers.dev/founding-humans](https://world-id-chatgpt.foundry-world.workers.dev/founding-humans)
@@ -25,10 +27,37 @@ This is a private repository, so the developer must already have GitHub access.
 For a local clone, pass the absolute repository path to
 `codex plugin marketplace add` instead.
 
-The plugin connects to the production MCP endpoint above and starts its own
-OAuth flow for each user. Use Codex CLI 0.147.0 or newer for portable Agent
-Plugin installation, then start a new task after installing so the bundled
-skill and MCP tools are loaded.
+The installable plugin connects only to the unified hub endpoint. The hub reads
+the official World ID benefit catalog from `https://auth.world.org/mcp` and can
+delegate approved operations to AgentMail's and Maitre's existing production MCP
+servers. Users install one MCP connection, but still grant separate OAuth consent
+to each provider when first used. World ID credentials are never transferred to
+a downstream provider.
+
+Use Codex CLI 0.147.0 or newer for portable Agent Plugin installation, then start
+a new task after installing so the bundled skills and MCP tools are loaded.
+
+### Unified hub architecture
+
+The `/mcp/hub` surface intentionally exposes a small, provider-neutral tool set:
+
+- discover official World ID benefits and partner connection states;
+- start an existing provider-hosted OAuth flow;
+- inspect an approved provider's live MCP tool schemas;
+- delegate allowlisted reads; and
+- delegate allowlisted writes after explicit confirmation.
+
+Each World ID subject receives isolated Durable Object state for downstream MCP
+connections. Provider tokens and MCP metadata remain server-side. Consequential
+actions use MCP form elicitation when the client supports it; clients without
+`elicitation.form` receive a short-lived, single-use confirmation token bound to
+the exact stored arguments. Authentication challenges from protected downstream
+tools are converted into provider-hosted reconnect links without retrying the
+action.
+
+AgentMail and Maitre did not need custom code for this prototype: the hub uses
+their existing MCP endpoints and OAuth flows. This does not create provider
+accounts, guarantee free tiers, or imply a commercial provisioning agreement.
 
 This project is a production-shaped remote MCP server that links a World ID 4.0 session to an AI assistant through OAuth 2.1.
 

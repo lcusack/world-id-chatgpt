@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "world-id": {
+    "world-id-hub": {
       "type": "http",
-      "url": "https://world-id-chatgpt.foundry-world.workers.dev/mcp"
+      "url": "https://world-id-chatgpt.foundry-world.workers.dev/mcp/hub"
     }
   }
 }
